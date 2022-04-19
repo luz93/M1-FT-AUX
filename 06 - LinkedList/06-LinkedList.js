@@ -2,22 +2,19 @@ const { LinkedList, Node } = require("../estructuras")
   //agregar el metodo size al prototipo de LinkedList.
   // Este metodo deberia retornar la cantidad de elementos de la lista
   LinkedList.prototype.size=function(){
-    return this.len
-  }
-    // -----------------
-  //   var size = 0
+    var size = 0
     
-  //   if(!this.head){
-  //     return size;
-  //   } else {
-  //     var puntero = this.head
-  //     size = size + 1
-  //     while (puntero.next){
-  //       puntero = puntero.next
-  //       size = size + 1
-  //     }
-  //   } return size
-  // }
+    if(!this.head){
+      return size;
+    } else {
+      var puntero = this.head
+      size = size + 1
+      while (puntero.next){
+        puntero = puntero.next
+        size = size + 1
+      }
+    } return size
+  }
 // -----------------------------------------
   // let oCurrent = this.head
   // let nCounter = 1
@@ -61,10 +58,52 @@ LinkedList.prototype.orderList = function () {
   
     
 LinkedList.prototype.insert = function(data,pos) {
-	
-
-
-}
+    // var nuevoNodo = new Node(data);
+    // var current = this.head;
+    // var posicion = 1
+  
+  
+    //  if (pos === 1) {
+    //    let aux = this.head;
+    //    this.head = nuevoNodo;
+    //    this.head.next = aux;
+    //    return this
+    //   } else {
+        
+    //     while(posicion < pos) {
+    //       if (posicion === pos-1) {
+    //         let aux = current.next
+    //         current.next = nuevoNodo
+    //         current.next.next = aux
+    //       } else {
+    //       current = current.next
+    //     }
+    //     posicion++;
+    //   }
+    //   return this
+    //   }
+  // ---------------------------
+  if(pos <1 || pos > this.len){
+    return null;
+  }
+  let newnodo = new Node(data)
+  let Actual = this.head;
+  let previous;
+ 
+    if(pos === 1 ){
+      newnodo.next = Actual;
+      this.head = newnodo;
+      
+    } else {
+      for(let i =0 ; i <pos-1;i++){
+        previous =Actual;
+        Actual = Actual.next;
+      }
+      newnodo.next = Actual;
+      previous.next = newnodo;
+    }
+    this.len++;
+  }
   
 
 
