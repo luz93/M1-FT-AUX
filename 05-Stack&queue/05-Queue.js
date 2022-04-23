@@ -19,7 +19,20 @@ const { Queue } = require("../estructuras")
 
 var controlAcces = function(queue, event){
     // Tu código aca:
+    //Queue( colas): FIFO 
+  let arraPerson = []; // nombre de las personas que complen los requisitos
+  let numTicket = []; // numero de ticket de los que ingresan
+    while (queue.size() > 0 ){
+      let fila = queue.dequeue()  // eliminamos el primer elemento de la fila
+          if ( fila.age >= 18 && 
+                fila.ticket.event === event &&
+                !numTicket.includes(fila.ticket.number)) {  // el metodo includes no da true o false si el elemengto esta incluido
+                numTicket.push(fila.ticket.number );
+                arraPerson.push(fila.fullname);
+          }   
+  }
     
+        return arraPerson;
   };
       
   
